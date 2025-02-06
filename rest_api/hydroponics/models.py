@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from rest_api.common.managers import ActiveObjects
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -13,7 +12,6 @@ class System(models.Model):
     is_deleted = models.BooleanField(default=False)
     created_time = models.DateTimeField(auto_now_add=True)
 
-    objects = ActiveObjects()
     all_objects = models.Manager()
 
 
