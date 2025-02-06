@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=hydroponics
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=1234
+
+  web:
+    build:
+      context: ./rest_api
+      dockerfile: Dockerfile
+    command: >
+       python rest_api/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+
+volumes:
+  postgres_data:
