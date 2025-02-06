@@ -12,5 +12,5 @@ class SensorDataFilter(django_filters.FilterSet):
     created_time_max = django_filters.DateTimeFilter(field_name='created_time', lookup_expr='lt')
 
     class Meta:
-        model = SensorData
+        model = Sensor
         fields = ['ph', 'temperature', 'tds', 'created_time']

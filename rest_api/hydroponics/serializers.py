@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import System
-from sensors.models import SensorData
+from sensors.models import Sensor
 from sensors.serializers import SensorDataSerializer
 
 
